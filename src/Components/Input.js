@@ -1,12 +1,16 @@
-const Input = ({ placeholder, value, onChange }) => {
+import './styles/Input.css';
+
+const Input = ({ placeholder, value, onChange, className }) => {
     return (
-        <li>
-            <input
-                type="text"
-                placeholder={placeholder}
+        <li className={className + ' list-none'}>
+            <div
+                contentEditable={true}
+                spellCheck={false}
+                data-placeholder={placeholder}
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
-            />
+                onInput={(e) => onChange(e.target.textContent)}
+                className="focus:outline-none"
+            ></div>
         </li>
     );
 };
