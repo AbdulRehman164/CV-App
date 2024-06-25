@@ -6,24 +6,27 @@ const Project = () => {
     const [shorDescription, setShortDescription] = useState('');
     const [longDescription, setLongDescription] = useState('');
     return (
-        <div>
-            <ul>
-                <Input
-                    placeholder="Project Name"
-                    value={projectName}
-                    onChange={setProjectName}
-                />
+        <div className="flex flex-col gap-4 text-gray-700">
+            <Input
+                placeholder="Project Name"
+                value={projectName}
+                onChange={setProjectName}
+                className={'text-x font-semibold'}
+            />
+            <div className="flex flex-col gap-2">
                 <Input
                     placeholder="Short Description"
                     value={shorDescription}
                     onChange={setShortDescription}
                 />
+
                 <Input
                     placeholder="Long Description"
                     value={longDescription}
                     onChange={setLongDescription}
+                    className="ml-5"
                 />
-            </ul>
+            </div>
         </div>
     );
 };
@@ -37,12 +40,15 @@ const Projects = () => {
                 value={heading}
                 onChange={setHeading}
                 id="heading"
+                className="text-3xl font-bold text-gray-700 border-b-4"
             />
-            {Array(3)
-                .fill('')
-                .map(() => (
-                    <Project />
-                ))}
+            <div className="flex flex-col gap-10">
+                {Array(3)
+                    .fill('')
+                    .map(() => (
+                        <Project />
+                    ))}
+            </div>
         </div>
     );
 };

@@ -2,13 +2,14 @@ import './styles/Input.css';
 
 const Input = ({ placeholder, value, onChange, className }) => {
     return (
-        <li className={className + ' list-none'}>
+        <li className={'list-none ' + className}>
             <div
                 contentEditable={true}
                 spellCheck={false}
                 data-placeholder={placeholder}
-                value={value}
-                onInput={(e) => onChange(e.target.textContent)}
+                onInput={(e) => {
+                    onChange(e.target.textContent);
+                }}
                 className="focus:outline-none"
             ></div>
         </li>
