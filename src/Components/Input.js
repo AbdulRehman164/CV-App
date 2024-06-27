@@ -1,6 +1,13 @@
+import { forwardRef } from 'react';
 import './styles/Input.css';
 
-const Input = ({ placeholder, value, onChange, className }) => {
+const Input = ({
+    placeholder,
+    onKeyDown = () => null,
+    onChange,
+    className,
+    id = null,
+}) => {
     return (
         <li className={'list-none ' + className}>
             <div
@@ -11,6 +18,8 @@ const Input = ({ placeholder, value, onChange, className }) => {
                     onChange(e.target.textContent);
                 }}
                 className="focus:outline-none"
+                onKeyDown={onKeyDown}
+                id={id}
             ></div>
         </li>
     );
