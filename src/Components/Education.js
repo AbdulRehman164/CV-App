@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Input from './Input';
+import { v4 as uuidv4 } from 'uuid';
 
 const EducationBlock = () => {
     const [degree, setDegree] = useState('');
@@ -8,13 +9,13 @@ const EducationBlock = () => {
         <div>
             <Input
                 placeholder="Name of Degree"
-                value={degree}
                 onChange={setDegree}
+                className="text-xl font-medium"
             />
             <Input
                 placeholder="Name of Institute"
-                value={institute}
                 onChange={setInsitute}
+                className="text-xl font-medium text-blue-500"
             />
         </div>
     );
@@ -23,28 +24,23 @@ const EducationBlock = () => {
 const Education = () => {
     const [heading, setHeading] = useState('Education');
     const [educationBlocks, setEducationBlocks] = useState([
-        <EducationBlock />,
-        <EducationBlock />,
+        uuidv4(),
+        uuidv4(),
     ]);
 
     return (
-        <div>
+        <div className="text-gray-700">
             <Input
                 placeholder="Education"
                 value={heading}
                 onChange={setHeading}
+                className="text-3xl font-bold border-b-4"
             />
-            <button
-                onClick={() => {
-                    setEducationBlocks([
-                        ...educationBlocks,
-                        <EducationBlock />,
-                    ]);
-                }}
-            >
-                Add
-            </button>
-            {educationBlocks}
+            <div className="flex flex-col gap-4">
+                {educationBlocks.map((id) => (
+                    <EducationBlock key={id} />
+                ))}
+            </div>
         </div>
     );
 };

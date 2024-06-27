@@ -1,10 +1,10 @@
-import { forwardRef } from 'react';
+import { useState } from 'react';
 import './styles/Input.css';
 
 const Input = ({
     placeholder,
     onKeyDown = () => null,
-    onChange,
+    onChange = () => null,
     className,
     id = null,
 }) => {

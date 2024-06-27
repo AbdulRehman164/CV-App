@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Input from './Input';
+import { v4 as uuidv4 } from 'uuid';
 
 const Project = () => {
     const [projectName, setProjectName] = useState('');
@@ -9,20 +10,17 @@ const Project = () => {
         <div className="flex flex-col gap-4 text-gray-700">
             <Input
                 placeholder="Project Name"
-                value={projectName}
                 onChange={setProjectName}
-                className={'text-x font-semibold'}
+                className={'text-xl font-semibold'}
             />
             <div className="flex flex-col gap-2">
                 <Input
                     placeholder="Short Description"
-                    value={shorDescription}
                     onChange={setShortDescription}
                 />
 
                 <Input
                     placeholder="Long Description"
-                    value={longDescription}
                     onChange={setLongDescription}
                     className="ml-5"
                 />
@@ -33,21 +31,19 @@ const Project = () => {
 
 const Projects = () => {
     const [heading, setHeading] = useState('Projects');
+    const [projects, setPrjects] = useState([uuidv4(), uuidv4(), uuidv4()]);
     return (
         <div>
             <Input
                 placeholder={'Projects'}
-                value={heading}
                 onChange={setHeading}
                 id="heading"
                 className="text-3xl font-bold text-gray-700 border-b-4"
             />
             <div className="flex flex-col gap-10">
-                {Array(3)
-                    .fill('')
-                    .map(() => (
-                        <Project />
-                    ))}
+                {projects.map((id) => (
+                    <Project key={id} />
+                ))}
             </div>
         </div>
     );
