@@ -15,7 +15,7 @@ const PersonalInfo = () => {
 
     const svgStyle = 'opacity-50 h-4 w-4';
     return (
-        <div className="grid  grid-cols-custom-cols">
+        <div className="p-9 grid  grid-cols-custom-cols">
             <div>
                 <Input
                     placeholder="Name"
@@ -68,7 +68,6 @@ const PersonalInfo = () => {
                     />
                 </div>
             </ul>
-            <div className="bg-gray-500 h-32 w-32 row-span-2 col-start-2 justify-self-end"></div>
         </div>
     );
 };

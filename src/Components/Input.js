@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './styles/Input.css';
 
 const Input = ({
@@ -8,9 +8,26 @@ const Input = ({
     className,
     id = null,
 }) => {
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        handlePlaceholder();
+    });
+
+    const handlePlaceholder = () => {
+        if (inputRef.current.textContent.length <= 0) {
+            inputRef.current.innerHTML = '';
+        }
+    };
+
+    const handleKeyDown = (e) => {
+        onKeyDown(e);
+        handlePlaceholder();
+    };
     return (
         <li className={'list-none ' + className}>
             <div
+                ref={inputRef}
                 contentEditable={true}
                 spellCheck={false}
                 data-placeholder={placeholder}
@@ -18,7 +35,7 @@ const Input = ({
                     onChange(e.target.textContent);
                 }}
                 className="focus:outline-none"
-                onKeyDown={onKeyDown}
+                onKeyDown={handleKeyDown}
                 id={id}
             ></div>
         </li>

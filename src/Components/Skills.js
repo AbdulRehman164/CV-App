@@ -22,7 +22,7 @@ const Skills = () => {
     }, [skills]);
 
     return (
-        <div className="flex text-gray-700 flex-col gap-5">
+        <div className="flex text-gray-700 flex-col gap-5 p-9">
             <Input
                 placeholder={'skills'}
                 value={heading}
@@ -43,7 +43,7 @@ const Skills = () => {
                                 id,
                                 skills,
                                 setSkills,
-                                inputToBeFocused
+                                inputToBeFocused,
                             )
                         }
                     />

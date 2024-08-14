@@ -5,7 +5,7 @@ import Education from './Education';
 
 const CV = () => {
     return (
-        <div className="p-9 mx-44 my-2 border border-solid border-black flex flex-col gap-y-14">
+        <div className="mx-44 my-2 shadow-xl flex flex-col gap-y-14 w-[960px]">
             <PersonalInfo />
             <Projects />
             <Skills />
